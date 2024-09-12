@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Paisajes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="gallery" class="gallery">
+        <img id="landscape-image" src="" alt="Paisaje" />
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.gallery {
+    text-align: center;
+}
+
+#landscape-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    border: 5px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+// Lista de URLs de imágenes de paisajes
+const images = [
+    'https://source.unsplash.com/1600x900/?landscape,forest',
+    'https://source.unsplash.com/1600x900/?landscape,mountain',
+    'https://source.unsplash.com/1600x900/?landscape,beach',
+    'https://source.unsplash.com/1600x900/?landscape,lake',
+    'https://source.unsplash.com/1600x900/?landscape,desert'
+];
+
+let currentIndex = 0;
+
+// Función para cambiar la imagen
+function changeImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById('landscape-image').src = images[currentIndex];
+}
+
+// Configurar el evento de clic en el cuerpo de la página
+document.body.addEventListener('click', changeImage);
+
+// Inicializar con la primera imagen
+changeImage();
